@@ -1,0 +1,23 @@
+{
+  "name": "classnote-manager-node",
+  "version": "1.0.0",
+  "description": "Server side of Classnote Manager using Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//Soulike/Classnote-Manager-Node.git"
+  },
+  "author": "soulike",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-helmet": "^4.0.0",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.10.0",
+    "sequelize": "^4.41.2"
+  }
+}
