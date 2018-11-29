@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const fs = require('fs');
+const {User} = require('./database');
 
 async function mkdirAsync(path, options = {})
 {
@@ -94,6 +95,19 @@ function getSHA256(text)
     return getHash(text, 'sha256');
 }
 
+async function getUserAsync(session)
+{
+    const {username} = session;
+    if (!username)
+    {
+        return null;
+    }
+    else
+    {
+        return await User.findOne({where: {username}});
+    }
+}
+
 function generateErrorMessage(when, error)
 {
     return `Error occurred when ${when}. Error information:\n${error}`;
@@ -107,5 +121,6 @@ module.exports = {
     getSHA256,
     generateErrorMessage,
     mkdirAsync,
-    isExistAsync
+    isExistAsync,
+    getUserAsync
 };

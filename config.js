@@ -1,15 +1,7 @@
 // Server config file. Please specify all the item below before starting the server
 
-const path = require('path');
-const {homedir} = require('os');
-
 // The port which the server listens
 const PORT = 0;
-
-// Attention: All PATH constants MUST BE ABSOLUTE PATHS
-const PATH = {
-    NOTE_PATH: path.join(homedir(), 'notes')
-};
 
 // Database configs. Please refer to Sequelize documentations for further information
 // English: http://docs.sequelizejs.com/#example-usage
@@ -34,6 +26,5 @@ const DATABASE = {
 
 module.exports = {
     DATABASE,
-    PORT,
-    PATH
+    PORT
 };

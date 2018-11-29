@@ -4,38 +4,9 @@ const session = require('koa-session');
 const bodyParser = require('koa-bodyparser');
 const {key, CONFIG: KOA_SESSION_CONFIG} = require('./staticConfigs/koa-session');
 const router = require('./router/router');
-const {log, error, generateErrorMessage, mkdirAsync, isExistAsync} = require('./functions');
-const {PORT, PATH} = require('./config');
+const {log, error, generateErrorMessage} = require('./functions');
+const {PORT} = require('./config');
 const {db} = require('./database');
-
-isExistAsync(PATH.NOTE_PATH)
-    .then(isExist =>
-    {
-        if (!isExist)
-        {
-            log('Note folder does not exist');
-            mkdirAsync(PATH.NOTE_PATH, {recursive: true})
-                .then(() =>
-                {
-                    log('Note folder creation succeeded');
-                })
-                .catch(e =>
-                {
-                    error(generateErrorMessage('creating note folder', e));
-                    process.exit(0);
-                });
-        }
-        else
-        {
-            log('Note folder has existed');
-        }
-
-    })
-    .catch(e =>
-    {
-        error(generateErrorMessage('detecting note folder existence', e));
-        process.exit(0);
-    });
 
 db.sync()
     .then(() =>
