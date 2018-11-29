@@ -28,7 +28,7 @@ const Note = db.define('note', {
         }
     },
     content: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         validate: {
             notEmpty: true
         }
